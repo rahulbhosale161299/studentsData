@@ -36,7 +36,8 @@ namespace studentsData.Controllers
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-            if (dto.EndDate < dto.StartDate) return BadRequest("EndDate must be >= StartDate");
+            if (dto.EndDate < dto.StartDate) return BadRequest("EndDate must be >= StartDate");  
+
 
             // Overlap check
             var overlap = await _db.LeaveRequests.AnyAsync(l =>
